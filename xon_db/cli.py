@@ -68,6 +68,7 @@ def remove_cts_record(file_name, map, position):
     """
     db = XonoticDB.load_path(file_name)
     db.remove_cts_record(map, position)
+    db.save(file_name)
 
 
 @cli.command()
@@ -79,3 +80,4 @@ def remove_all_cts_records_by(file_name, crypto_idfp):
     """
     db = XonoticDB.load_path(file_name)
     db.remove_all_cts_records_by(crypto_idfp)
+    db.save(file_name)
