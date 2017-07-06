@@ -47,7 +47,7 @@ def test_save(example_data, fs):
     assert len(os.listdir('.')) == 2
     f1, f2 = os.listdir('.')
     assert f1 != f2
-    assert open(f1).read() == open(f2).read()
+    assert XonoticDB.load_path(f1).data == XonoticDB.load_path(f2).data
     os.mkdir('test.db')
     with pytest.raises(XonoticDBException) as e:
         new_db.save('test.db')
