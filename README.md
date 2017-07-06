@@ -27,7 +27,7 @@ You can python-xonotic-db as any other python software using  `pip install pytho
 Usage
 ------
 
-API docs are available at [http://python-xonotic-db.readthedocs.io/en/latest/](RTD).
+API docs are available at [RTD](http://python-xonotic-db.readthedocs.io/en/latest/).
 
 python-xonotic-db includes a simple command line tool `xon_db`.
 
