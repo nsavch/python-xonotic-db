@@ -3,37 +3,33 @@ import re
 import urllib.parse
 import time
 import logging
+from collections import UserDict
 
-from xon_serverdb.crc import crc_block
+from xon_db.crc import crc_block
 
 KEYPAIR_RE = re.compile(r'\\([^\\"]+)\\([^\\"]+)')
 DB_BUCKETS = 8192
 
-
 logger = logging.getLogger(__name__)
 
 
-def default_hashfunc(inp):
-    return crc_block(inp)
-
-
-class ServerDBException(Exception):
+class XonoticDBException(Exception):
     pass
 
 
-class ServerDB:
-    def __init__(self, data, db_buckets=DB_BUCKETS, hashfunc=default_hashfunc):
+class XonoticDB(UserDict):
+    def __init__(self, data, db_buckets=DB_BUCKETS, hashfunc=crc_block):
         self.db_buckets = db_buckets
         self.hashfunc = hashfunc
-        self.contents = {}
         for i in data.splitlines()[1:]:
             self.parse_line(i)
+        super().__init__()
 
     def parse_line(self, line):
         for i in KEYPAIR_RE.finditer(line):
             key = i.group(1)
             value = urllib.parse.unquote(i.group(2))
-            self.contents[key] = value
+            self.data[key] = value
 
     @classmethod
     def load(cls, file):
@@ -49,9 +45,9 @@ class ServerDB:
                 with open(file_path, 'r') as o:
                     d.write(o.read())
         elif os.path.exists(file_path):
-            raise ServerDBException('%s exists and is not a file. Cannot write to it.', file_path)
+            raise XonoticDBException('%s exists and is not a file. Cannot write to it.', file_path)
         lines = [''] * self.db_buckets
-        for key, value in self.contents.items():
+        for key, value in self.data.items():
             lines[self.hashfunc(key) % self.db_buckets] += r'\%s\%s' % (key, urllib.parse.quote(value))
         with open(file_path, 'w') as f:
             f.write('%d\n' % self.db_buckets)
