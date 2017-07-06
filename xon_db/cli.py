@@ -50,6 +50,7 @@ def set(file_name, key, value, new):
     Set a new value for the specified key.
     """
     db = XonoticDB.load_path(file_name)
+    # raise RuntimeError('%s %s %s %s' % (file_name, key, value, new))
     if key not in db and not new:
         print('Key %s is not found in the database' % key, file=sys.stderr)
         sys.exit(1)
