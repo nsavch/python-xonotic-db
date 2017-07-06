@@ -4,6 +4,16 @@ python-xonotic-db
 Python library to read and write [Xonotic](http://xonotic.org) databases
 
 
+Features
+------
+
+ * Read database contents
+ * Filter keys by pattern
+ * Set a specific key
+ * Delete a specific CTS record
+ * Delete all records set by a specific player
+
+
 Installation
 --------
 
