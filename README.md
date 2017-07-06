@@ -1,6 +1,8 @@
 python-xonotic-db
 =====
 
+[![Build Status](https://travis-ci.org/nsavch/python-xonotic-db.svg?branch=master)](https://travis-ci.org/nsavch/python-xonotic-db) [![Coverage Status](https://coveralls.io/repos/github/nsavch/python-xonotic-db/badge.svg?branch=master)](https://coveralls.io/github/nsavch/python-xonotic-db?branch=master)
+
 Python library to read and write [Xonotic](http://xonotic.org) databases
 
 
