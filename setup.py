@@ -17,7 +17,7 @@ setup(name='python-xonotic-db',
       ],
       classifiers=[
           'Development Status :: 3 - Alpha',
-          'Environment :: No Input/Output (Daemon)',
+          'Environment :: Console',
           'Intended Audience :: System Administrators',
           'Intended Audience :: Developers',
           'Intended Audience :: Other Audience',  # gamers

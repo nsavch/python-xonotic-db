@@ -1,0 +1,185 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Welcome to python-xonotic-db’s documentation! &#8212; python-xonotic-db 0.1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="welcome-to-python-xonotic-db-s-documentation">
+<h1>Welcome to python-xonotic-db’s documentation!<a class="headerlink" href="#welcome-to-python-xonotic-db-s-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<span class="target" id="module-xon_db"></span><dl class="class">
+<dt id="xon_db.XonoticDB">
+<em class="property">class </em><code class="descclassname">xon_db.</code><code class="descname">XonoticDB</code><span class="sig-paren">(</span><em>data: str</em>, <em>db_buckets=8192</em>, <em>hashfunc=&lt;function crc_block&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#xon_db.XonoticDB" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class for reading and writing xonotic databases. Provides dict-like interface</p>
+<dl class="method">
+<dt id="xon_db.XonoticDB.filter">
+<code class="descname">filter</code><span class="sig-paren">(</span><em>key_pattern='*'</em>, <em>is_regex=False</em><span class="sig-paren">)</span><a class="headerlink" href="#xon_db.XonoticDB.filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter database key by pattern
+:param key_pattern: pattern (either glob or regex)
+:param is_regex: should be True if the pattern is regex
+:return: iterator of (key, value) pairs</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="xon_db.XonoticDB.get_backup_file_name">
+<em class="property">static </em><code class="descname">get_backup_file_name</code><span class="sig-paren">(</span><em>file_path</em><span class="sig-paren">)</span><a class="headerlink" href="#xon_db.XonoticDB.get_backup_file_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a file name for backup file
+:param file_path: file path
+:return: backup file name</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="xon_db.XonoticDB.load">
+<em class="property">classmethod </em><code class="descname">load</code><span class="sig-paren">(</span><em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#xon_db.XonoticDB.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a database from an open file
+:param file: file
+:return: XonoticDB instance</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="xon_db.XonoticDB.load_path">
+<em class="property">classmethod </em><code class="descname">load_path</code><span class="sig-paren">(</span><em>file_path</em><span class="sig-paren">)</span><a class="headerlink" href="#xon_db.XonoticDB.load_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a database from the specified file path
+:param file_path: file path
+:return: XonoticDB instance</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xon_db.XonoticDB.parse_line">
+<code class="descname">parse_line</code><span class="sig-paren">(</span><em>line: str</em><span class="sig-paren">)</span><a class="headerlink" href="#xon_db.XonoticDB.parse_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse a line from database
+:param line: line to parse</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xon_db.XonoticDB.remove_all_cts_records_by">
+<code class="descname">remove_all_cts_records_by</code><span class="sig-paren">(</span><em>crypto_idfp</em><span class="sig-paren">)</span><a class="headerlink" href="#xon_db.XonoticDB.remove_all_cts_records_by" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove all CTS records from the specified player
+:param crypto_idfp:
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xon_db.XonoticDB.remove_cts_record">
+<code class="descname">remove_cts_record</code><span class="sig-paren">(</span><em>map</em>, <em>position</em><span class="sig-paren">)</span><a class="headerlink" href="#xon_db.XonoticDB.remove_cts_record" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a CTS record
+:param map:
+:param position:
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="xon_db.XonoticDB.save">
+<code class="descname">save</code><span class="sig-paren">(</span><em>file_path</em><span class="sig-paren">)</span><a class="headerlink" href="#xon_db.XonoticDB.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write database to a file. If a file with the specified name exists it’s backed up
+:param file_path: file path</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="xon_db.XonoticDBException">
+<em class="property">exception </em><code class="descclassname">xon_db.</code><code class="descname">XonoticDBException</code><a class="headerlink" href="#xon_db.XonoticDBException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Something went wrong with Xonotic DB</p>
+</dd></dl>
+
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">python-xonotic-db</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Nick Savchenko.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

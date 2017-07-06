@@ -1,6 +1,4 @@
 1. Implement API
 2. Add unit tests
-3. Add setup.py
-4. Upload to pypi
-5. Add command line tool
-6. Add documentation
+3. Add command line tool
+4. Add documentation
