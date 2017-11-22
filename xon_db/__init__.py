@@ -196,4 +196,6 @@ class XonoticDB(UserDict):
         self.__merge_cts_times(crypto_idfp, crypto_idfp_list)
         self.__merge_cts_speeds(crypto_idfp, crypto_idfp_list)
         for i in crypto_idfp_list:
-            del self['/uid2name/{}'.format(i)]
+            k = '/uid2name/{}'.format(i)
+            if k in self:
+                del self[k]
