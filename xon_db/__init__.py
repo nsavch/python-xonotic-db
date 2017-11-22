@@ -3,7 +3,7 @@ import re
 import urllib.parse
 import time
 import logging
-from collections import UserDict
+from collections import UserDict, defaultdict
 from fnmatch import fnmatch
 
 from xon_db.crc import crc_block
@@ -149,3 +149,51 @@ class XonoticDB(UserDict):
                 to_remove.append((match.group(1), int(match.group(2))))
         for i in to_remove:
             self.remove_cts_record(*i)
+
+    def __merge_cts_speeds(self, crypto_idfp, crypto_idfp_list):
+        speed_id_regex = re.compile('(.+)/cts100record/speed/crypto_idfp')
+        speed_value_regex = re.compile('(.+)/cts100record/speed/speed')
+        speeds = defaultdict(dict)  # map -> idfp -> speed
+        for k, v in self.filter(speed_id_regex, is_regex=True):
+            if v in crypto_idfp_list:
+                self[k] = crypto_idfp
+
+    def __merge_cts_times(self, crypto_idfp, crypto_idfp_list):
+        time_id_regex = re.compile('(.+)/cts100record/crypto_idfp(\d+)')
+        target_records = {}  # map -> position
+        for k, idfp in self.filter(time_id_regex, is_regex=True):
+            if idfp == crypto_idfp:
+                match = time_id_regex.match(k)
+                position = int(match.group(2))
+                target_records[match.group(1)] = position
+        candidate_records = defaultdict(list)  # map -> [position]
+        for k, idfp in self.filter(time_id_regex, is_regex=True):
+            if idfp in crypto_idfp_list:
+                match = time_id_regex.match(k)
+                position = int(match.group(2))
+                candidate_records[match.group(1)].append(position)
+        for map_, results in candidate_records.items():
+            results.sort()
+            if map_ not in target_records or results[0] < target_records[map_]:
+                # either target not set a record on this map, or set a worse record than one of candidates
+                self['{}/cts100record/crypto_idfp{}'.format(map_, results[0])] = crypto_idfp
+                for i in results[1:]:
+                    self.remove_cts_record(map_, i)
+                if map_ in target_records:
+                    self.remove_cts_record(map_, target_records[map_])
+            else:
+                # all candidates worse than the target
+                for i in results:
+                    self.remove_cts_record(map_, i)
+
+    def merge_cts_records(self, crypto_idfp, crypto_idfp_list):
+        """
+        Merge all CTS records (including speed) of each player in crypto_idfp_list with records of crypto_idfp
+        :param crypto_idfp: Target player, who will now own all records of players in crypto_idfp_list
+        :param crypto_idfp_list: List of crypto_idfp
+        :return:
+        """
+        self.__merge_cts_times(crypto_idfp, crypto_idfp_list)
+        self.__merge_cts_speeds(crypto_idfp, crypto_idfp_list)
+        for i in crypto_idfp_list:
+            del self['/uid2name/{}'.format(i)]

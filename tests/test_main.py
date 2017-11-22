@@ -37,6 +37,16 @@ def test_remove_cts_records():
     assert db['flatland/cts100record/time4'] == time
 
 
+def test_merge_cts_records():
+    db = XonoticDB.load_path('tests/example.db')
+    target = '1FcXJuGP7Sl4Oxh4ZkN0qf+ZGZEMmocI6GltiENp64g='
+    idfps = ['YGNDnN6LuwQ0iXVfNJkDi4Rdd3J+6imQCUA4pk1JgXA=',
+             'tLQRHRKNx68teTOX8vhlwSU59+pzO7yF6dVpzxAcBFA=',
+             'zQYTEBOkv8Nnsd1oULi3JQRPWovTDzAzv6bs7RX1+bk=']
+    db.merge_cts_records(target, idfps)
+    # TODO: write some assertions here
+
+
 def test_save(example_data, fs):
     db = XonoticDB(example_data)
     db['test_key'] = 'test_value'

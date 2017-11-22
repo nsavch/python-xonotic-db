@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 
 setup(name='python-xonotic-db',
-      version='0.2.1',
+      version='0.3.0',
       description='library to read and write Xonotic databases',
       long_description='library to read and write Xonotic databases',
       url='https://github.com/nsavch/python-xonotic-db',
@@ -13,10 +13,10 @@ setup(name='python-xonotic-db',
       keywords='xonotic',
       install_requires=[
           'setuptools',
-          'click==6.7'
+          'click>=6.7'
       ],
       classifiers=[
-          'Development Status :: 3 - Alpha',
+          'Development Status :: 4 - Beta',
           'Environment :: Console',
           'Intended Audience :: System Administrators',
           'Intended Audience :: Developers',

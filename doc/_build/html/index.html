@@ -44,11 +44,11 @@
 </div>
 <span class="target" id="module-xon_db"></span><dl class="class">
 <dt id="xon_db.XonoticDB">
-<em class="property">class </em><code class="descclassname">xon_db.</code><code class="descname">XonoticDB</code><span class="sig-paren">(</span><em>data: str</em>, <em>db_buckets=8192</em>, <em>hashfunc=&lt;function crc_block&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#xon_db.XonoticDB" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">xon_db.</code><code class="descname">XonoticDB</code><span class="sig-paren">(</span><em>data: str</em>, <em>db_buckets=8192</em>, <em>hashfunc=&lt;function crc_block&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xon_db.html#XonoticDB"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xon_db.XonoticDB" title="Permalink to this definition">¶</a></dt>
 <dd><p>A class for reading and writing xonotic databases. Provides dict-like interface</p>
 <dl class="method">
 <dt id="xon_db.XonoticDB.filter">
-<code class="descname">filter</code><span class="sig-paren">(</span><em>key_pattern='*'</em>, <em>is_regex=False</em><span class="sig-paren">)</span><a class="headerlink" href="#xon_db.XonoticDB.filter" title="Permalink to this definition">¶</a></dt>
+<code class="descname">filter</code><span class="sig-paren">(</span><em>key_pattern='*'</em>, <em>is_regex=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xon_db.html#XonoticDB.filter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xon_db.XonoticDB.filter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Filter database key by pattern
 :param key_pattern: pattern (either glob or regex)
 :param is_regex: should be True if the pattern is regex
@@ -57,7 +57,7 @@
 
 <dl class="staticmethod">
 <dt id="xon_db.XonoticDB.get_backup_file_name">
-<em class="property">static </em><code class="descname">get_backup_file_name</code><span class="sig-paren">(</span><em>file_path</em><span class="sig-paren">)</span><a class="headerlink" href="#xon_db.XonoticDB.get_backup_file_name" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">get_backup_file_name</code><span class="sig-paren">(</span><em>file_path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xon_db.html#XonoticDB.get_backup_file_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xon_db.XonoticDB.get_backup_file_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get a file name for backup file
 :param file_path: file path
 :return: backup file name</p>
@@ -65,7 +65,7 @@
 
 <dl class="classmethod">
 <dt id="xon_db.XonoticDB.load">
-<em class="property">classmethod </em><code class="descname">load</code><span class="sig-paren">(</span><em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#xon_db.XonoticDB.load" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">load</code><span class="sig-paren">(</span><em>file</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xon_db.html#XonoticDB.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xon_db.XonoticDB.load" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load a database from an open file
 :param file: file
 :return: XonoticDB instance</p>
@@ -73,22 +73,31 @@
 
 <dl class="classmethod">
 <dt id="xon_db.XonoticDB.load_path">
-<em class="property">classmethod </em><code class="descname">load_path</code><span class="sig-paren">(</span><em>file_path</em><span class="sig-paren">)</span><a class="headerlink" href="#xon_db.XonoticDB.load_path" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">load_path</code><span class="sig-paren">(</span><em>file_path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xon_db.html#XonoticDB.load_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xon_db.XonoticDB.load_path" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load a database from the specified file path
 :param file_path: file path
 :return: XonoticDB instance</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="xon_db.XonoticDB.merge_cts_records">
+<code class="descname">merge_cts_records</code><span class="sig-paren">(</span><em>crypto_idfp</em>, <em>crypto_idfp_list</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xon_db.html#XonoticDB.merge_cts_records"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xon_db.XonoticDB.merge_cts_records" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merge all CTS records (including speed) of each player in crypto_idfp_list with records of crypto_idfp
+:param crypto_idfp: Target player, who will now own all records of players in crypto_idfp_list
+:param crypto_idfp_list: List of crypto_idfp
+:return:</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="xon_db.XonoticDB.parse_line">
-<code class="descname">parse_line</code><span class="sig-paren">(</span><em>line: str</em><span class="sig-paren">)</span><a class="headerlink" href="#xon_db.XonoticDB.parse_line" title="Permalink to this definition">¶</a></dt>
+<code class="descname">parse_line</code><span class="sig-paren">(</span><em>line: str</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xon_db.html#XonoticDB.parse_line"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xon_db.XonoticDB.parse_line" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parse a line from database
 :param line: line to parse</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="xon_db.XonoticDB.remove_all_cts_records_by">
-<code class="descname">remove_all_cts_records_by</code><span class="sig-paren">(</span><em>crypto_idfp</em><span class="sig-paren">)</span><a class="headerlink" href="#xon_db.XonoticDB.remove_all_cts_records_by" title="Permalink to this definition">¶</a></dt>
+<code class="descname">remove_all_cts_records_by</code><span class="sig-paren">(</span><em>crypto_idfp</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xon_db.html#XonoticDB.remove_all_cts_records_by"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xon_db.XonoticDB.remove_all_cts_records_by" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove all CTS records from the specified player
 :param crypto_idfp:
 :return:</p>
@@ -96,7 +105,7 @@
 
 <dl class="method">
 <dt id="xon_db.XonoticDB.remove_cts_record">
-<code class="descname">remove_cts_record</code><span class="sig-paren">(</span><em>map</em>, <em>position</em><span class="sig-paren">)</span><a class="headerlink" href="#xon_db.XonoticDB.remove_cts_record" title="Permalink to this definition">¶</a></dt>
+<code class="descname">remove_cts_record</code><span class="sig-paren">(</span><em>map</em>, <em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xon_db.html#XonoticDB.remove_cts_record"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xon_db.XonoticDB.remove_cts_record" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove a CTS record
 :param map:
 :param position:
@@ -105,7 +114,7 @@
 
 <dl class="method">
 <dt id="xon_db.XonoticDB.save">
-<code class="descname">save</code><span class="sig-paren">(</span><em>file_path</em><span class="sig-paren">)</span><a class="headerlink" href="#xon_db.XonoticDB.save" title="Permalink to this definition">¶</a></dt>
+<code class="descname">save</code><span class="sig-paren">(</span><em>file_path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/xon_db.html#XonoticDB.save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xon_db.XonoticDB.save" title="Permalink to this definition">¶</a></dt>
 <dd><p>Write database to a file. If a file with the specified name exists it’s backed up
 :param file_path: file path</p>
 </dd></dl>
@@ -114,7 +123,7 @@
 
 <dl class="exception">
 <dt id="xon_db.XonoticDBException">
-<em class="property">exception </em><code class="descclassname">xon_db.</code><code class="descname">XonoticDBException</code><a class="headerlink" href="#xon_db.XonoticDBException" title="Permalink to this definition">¶</a></dt>
+<em class="property">exception </em><code class="descclassname">xon_db.</code><code class="descname">XonoticDBException</code><a class="reference internal" href="_modules/xon_db.html#XonoticDBException"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#xon_db.XonoticDBException" title="Permalink to this definition">¶</a></dt>
 <dd><p>Something went wrong with Xonotic DB</p>
 </dd></dl>
 

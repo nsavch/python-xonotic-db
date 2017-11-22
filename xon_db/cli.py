@@ -22,7 +22,7 @@ def dump(file_name, pattern):
     db = XonoticDB.load_path(file_name)
     items = sorted(db.filter(pattern), key=lambda x: natural_sort_key(x[0]))
     for k, v in items:
-        print('%s: %s' % (k, v))
+        click.echo('%s: %s' % (k, v))
 
 
 @cli.command()
@@ -37,7 +37,7 @@ def get(file_name, key):
     if value is None:
         sys.exit(1)
     else:
-        print(value)
+        click.echo(value)
 
 
 @cli.command()
@@ -50,9 +50,8 @@ def set(file_name, key, value, new):
     Set a new value for the specified key.
     """
     db = XonoticDB.load_path(file_name)
-    # raise RuntimeError('%s %s %s %s' % (file_name, key, value, new))
     if key not in db and not new:
-        print('Key %s is not found in the database' % key, file=sys.stderr)
+        click.echo('Key %s is not found in the database' % key, file=sys.stderr)
         sys.exit(1)
     else:
         db[key] = value
@@ -81,4 +80,17 @@ def remove_all_cts_records_by(file_name, crypto_idfp):
     """
     db = XonoticDB.load_path(file_name)
     db.remove_all_cts_records_by(crypto_idfp)
+    db.save(file_name)
+
+
+@cli.command()
+@click.argument('file_name', type=click.Path(exists=True))
+@click.argument('crypto_idfp', nargs=1)
+@click.argument('crypto_idfps', nargs=-1)
+def merge_cts_records(file_name, crypto_idfp, crypto_idfps):
+    """
+    Merge cts records made by CRYPTO_IDFPS to CRYPTO_IDFP
+    """
+    db = XonoticDB.load_path(file_name)
+    db.merge_cts_records(crypto_idfp, crypto_idfps)
     db.save(file_name)
