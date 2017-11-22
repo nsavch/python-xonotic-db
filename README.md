@@ -1,6 +1,8 @@
 python-xonotic-db
 =====
 
+[![Build Status](https://travis-ci.org/nsavch/python-xonotic-db.svg?branch=master)](https://travis-ci.org/nsavch/python-xonotic-db) [![Coverage Status](https://coveralls.io/repos/github/nsavch/python-xonotic-db/badge.svg?branch=master)](https://coveralls.io/github/nsavch/python-xonotic-db?branch=master)
+
 Python library to read and write [Xonotic](http://xonotic.org) databases
 
 
@@ -25,6 +27,8 @@ You can python-xonotic-db as any other python software using  `pip install pytho
 Usage
 ------
 
-See `doc/_build/index.html` for short API reference. Also python-xonotic-db includes a simple command line tool `xon_db`.
+API docs are available at [RTD](http://python-xonotic-db.readthedocs.io/en/latest/).
+
+python-xonotic-db includes a simple command line tool `xon_db`.
 
 Run `xon_db --help` to get some help about the command line tool and its usage.
